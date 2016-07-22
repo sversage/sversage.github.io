@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="patentlyAI">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Varela+Round">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+  <script src="app.js"></script>
+  <script src="elastic.js"></script>
+  <title>Patent Search</title>
+</head>
+<body ng-controller="ResultConroller as resultCtrl">
+  <div class="container">
+    <hr>
+    <div class="row">
+      <p class="text-center logo"><strong>patently</strong></p>
+      <div class="col-md-8 col-md-offset-2">
+        <!-- Form for search -->
+        <form name="searchForm" ng-submit="searchForm.$valid && resultCtrl.patentsSearch()" novalidate>
+          <div class="form-group">
+            <label for="query"></label>
+            <textarea class="form-control msd-elastic" ng-model="resultCtrl.searchQuery" id="query" placeholder="Search Patents" rows="1" required></textarea>
+          </div>
+          <div class="text-center">
+            <input type="submit" value="Search" class="btn btn-default" tooltip-placement="right" uib-tooltip="Have you been specific enough?"></input>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Show patents result -->
+    <div class="row" uib-collapse="resultCtrl.time === 0">
+      <h4 ng-show="resultCtrl.results.length > 0"><strong>Results</strong></h4>
+      <h4 ng-show="resultCtrl.results.length === 0"><strong>No results found.</strong></h4>
+      <h6 class="sub-result">Query from ~4,100,000 patents ({{resultCtrl.time / 1000}} seconds)</h6>
+
+      <div class="col-md-8">
+        <div class="patent" ng-repeat="patent in resultCtrl.results">
+          <div class="patent-title">
+            <a target="_blank" href="{{patent.link}}">{{patent.title}}</a>
+            <img ng-src="{{patent.score | ratingFilter}}" alt="image" height="20" width="20"/>
+          </div>
+          <div class="patent-info">
+            <span class="info"> Publication: {{patent.date | formatDate}} |</span>
+            <span class="info"> Document Number: {{patent.doc_number}}</span>
+          </div>
+          <div class="patent-abstract">
+            <p>{{patent.abstract}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
