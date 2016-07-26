@@ -26,6 +26,13 @@ textarea {
   color: #808080;
 }
 
+img.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
 /*.ng-invalid.ng-dirty {
   border-color: red;
 }

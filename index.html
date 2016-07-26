@@ -19,13 +19,14 @@
   <div class="container">
     <hr>
     <div class="row">
-      <p class="text-center logo"><strong>patently</strong></p>
+      <!-- <p class="text-center logo"><strong>patently</strong></p> -->
+      <img class='logo' src="./images/Patently_logo.jpg" alt="Patently"/>
       <div class="col-md-8 col-md-offset-2">
         <!-- Form for search -->
         <form name="searchForm" ng-submit="searchForm.$valid && resultCtrl.patentsSearch()" novalidate>
           <div class="form-group">
             <label for="query"></label>
-            <textarea class="form-control msd-elastic" ng-model="resultCtrl.searchQuery" id="query" placeholder="Search Patents" rows="1" required></textarea>
+            <input type="text" class="form-control msd-elastic" ng-model="resultCtrl.searchQuery" id="query" placeholder="Search Patents" rows="1" required></input>
           </div>
           <div class="text-center">
             <input type="submit" value="Search" class="btn btn-default" tooltip-placement="right" uib-tooltip="Have you been specific enough?"></input>
@@ -40,7 +41,7 @@
     <div class="row" uib-collapse="resultCtrl.time === 0">
       <h4 ng-show="resultCtrl.results.length > 0"><strong>Results</strong></h4>
       <h4 ng-show="resultCtrl.results.length === 0"><strong>No results found.</strong></h4>
-      <h6 class="sub-result">Query from ~4,100,000 patents ({{resultCtrl.time / 1000}} seconds)</h6>
+      <h6 class="sub-result">Queried 3,312,491 patents ({{resultCtrl.time / 1000}} seconds)</h6>
 
       <div class="col-md-8">
         <div class="patent" ng-repeat="patent in resultCtrl.results">
