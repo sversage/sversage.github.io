@@ -13,7 +13,7 @@
     query.time = 0;
 
     this.patentsSearch = function() {
-      var searchUrl = "http://52.91.115.15:5000/v1.0.0/return_patent_similarity?q=" + this.searchQuery;
+      var searchUrl = "http://54.175.249.14:5000/v1.0.0/return_patent_similarity?q=" + this.searchQuery;
       $http.get(searchUrl).then(function(response) {
         query.time = response.config.responseTimestamp - response.config.requestTimestamp;
         console.log('Time taken ' + (query.time / 1000) + ' seconds.');
