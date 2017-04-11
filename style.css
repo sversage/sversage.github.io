@@ -1,0 +1,42 @@
+textarea {
+  resize: none;
+}
+
+.logo {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 36px;
+  margin-bottom: 0;
+  color: #5e90e3;
+}
+
+/*Patent format*/
+.patent {
+  margin-top: 20px;
+}
+
+.info {
+  color: #657b83;
+}
+
+.patent-title {
+  font-size: 18px;
+}
+
+.sub-result {
+  color: #808080;
+}
+
+img.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+/*.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+.ng-valid.ng-dirty {
+  border-color: green;
+}*/
